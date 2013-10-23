@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title>Jasmine Spec Runner</title>
+
+  <link rel="shortcut icon" type="image/png" href="assets/jasmine-1.3.0/jasmine_favicon.png">
+  <link rel="stylesheet" type="text/css" href="assets/jasmine-1.3.0/jasmine.css">
+  <script type="text/javascript" src="assets/jasmine-1.3.0/jasmine.js"></script>
+  <script type="text/javascript" src="assets/jasmine-1.3.0/jasmine-html.js"></script>
+
+  <!-- include source files here... -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+  <script src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
+  <script src="http://ajax.cdnjs.com/ajax/libs/underscore.js/1.1.6/underscore-min.js"></script>
+  <script src="http://ajax.cdnjs.com/ajax/libs/backbone.js/0.3.3/backbone-min.js"></script>
+  <script type="text/javascript" src="assets/leap_script.js"></script>
+
+  <!-- include spec files here... -->
+  <script type="text/javascript" src="assets/spec.js"></script>
+
+  <script type="text/javascript">
+    (function() {
+      var jasmineEnv = jasmine.getEnv();
+      jasmineEnv.updateInterval = 1000;
+
+      var htmlReporter = new jasmine.HtmlReporter();
+
+      jasmineEnv.addReporter(htmlReporter);
+
+      jasmineEnv.specFilter = function(spec) {
+        return htmlReporter.specFilter(spec);
+      };
+
+      var currentWindowOnload = window.onload;
+
+      window.onload = function() {
+        if (currentWindowOnload) {
+          currentWindowOnload();
+        }
+        execJasmine();
+      };
+
+      function execJasmine() {
+        jasmineEnv.execute();
+      }
+
+    })();
+  </script>
+
+</head>
+
+<body>
+
+    <div class='leap-view'>
+      <ul class='errors'></ul>
+
+      <form id="propensity" onsubmit="return false; javascript:void(0);" >
+        <label>Income</label>
+        <input name="income"></input>
+        
+        <label>Zipcode</label>
+        <input name="zipcode"></input>
+        
+        <label>Age</label>
+        <input name="age"></input>
+        
+        <input type="submit"></input>
+      </form>
+
+      <div class='result'></div>
+    </div>
+
+
+
+</body>
+</html>

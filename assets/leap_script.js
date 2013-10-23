@@ -1,5 +1,5 @@
 
-W = {};
+var W = {};
 
 function IsNumeric(input) {
     return (input - 0) == input && (input+'').replace(/^\s+|\s+$/g, "").length > 0;
@@ -7,7 +7,7 @@ function IsNumeric(input) {
 
 $(document).ready( function() {
   
-        var LeapView = Backbone.View.extend({
+        W.LeapView = Backbone.View.extend({
                 el: $('.leap-view'),
                 api_url: "http://127.0.0.1:3000/",
 
@@ -26,7 +26,6 @@ $(document).ready( function() {
                 j_render: function(result) {
                     W.propensity = result.propensity;
                     W.ranking = result.ranking;
-                    console.log( 'rendering' );
                     $('.result', this.el).empty().append('<ul><li>Propensity: ' + W.propensity + '</li><li>Ranking: ' + W.ranking + '</li></ul>');
                 },
 
@@ -64,8 +63,6 @@ $(document).ready( function() {
                                 },
                                 contentType: 'application/json',
                                 success: function(result) {
-                                    console.log( 'success' );
-                                    console.log( result );
                                     that.j_render(result)
                                 }
                             });
@@ -74,5 +71,5 @@ $(document).ready( function() {
 
             });
 
-        var leap_view = new LeapView();
+        W.leap_view = new W.LeapView();
 });
