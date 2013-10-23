@@ -38,21 +38,21 @@ $(document).ready( function() {
                     var zipcode = $("input[name=zipcode]").val()
                     var age = $("input[name=age]").val()
                     
-                    var valid = true;
+                    W.valid = true;
                     if ( !IsNumeric(income) ) {
                         $( '.errors', this.el ).append('<li>Income should be numeric</li>');
-                        valid = false;
+                        W.valid = false;
                     }
                     if ( !IsNumeric(zipcode) || zipcode.length !== 5 ) {
                         $( '.errors', this.el ).append( '<li>Zipcode appears invalid</li>');
-                        valid = false;
+                        W.valid = false;
                     }
                     if ( !IsNumeric(age) ) {
                         $( '.errors', this.el ).append( '<li>Age should be numeric</li>' );
-                        valid = false;
+                        W.valid = false;
                     }
                     
-                    if ( valid ) {
+                    if ( W.valid ) {
                         $.ajax({
                                 url: this.api_url,
                                 dataType: 'jsonp',
